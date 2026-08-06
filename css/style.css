@@ -602,3 +602,43 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         visibility: visible !important;
     }
 }
+/* ================= iOS / SAFARI SPECIFIC FIXES ================= */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 768px) {
+    /* تسريع معالجة الرسوميات والسكرول على الآيفون */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body {
+        -webkit-font-smoothing: antialiased;
+        transform: translateZ(0);
+    }
+
+    /* تسريع استجابة اللمس الفورية */
+    a, button, input {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation !important;
+    }
+
+    /* إصلاح أيقونات FontAwesome العادية */
+    .fa, .fas, .fa-solid {
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* إصلاح أيقونات الماركات (Discord / TikTok) */
+    .fab, .fa-brands, .fa-discord, .fa-tiktok {
+        font-family: "Font Awesome 6 Brands" !important;
+        font-weight: 400 !important;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ضمان ترتيب الكروت عمودياً وعدم خروجها لليمين */
+    .stats, .journey-grid, .support-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
