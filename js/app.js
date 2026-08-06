@@ -34,11 +34,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// تشغيل تأثير ضوء الماوس للـ PC فقط لتقليل الاستهلاك على الجوال
+// تشغيل تأثير ضوء الماوس للـ PC فقط
 const mouseLight = document.querySelector(".mouse-light");
 if (mouseLight && window.innerWidth > 768) {
     document.addEventListener("mousemove", (e) => {
         mouseLight.style.left = e.clientX + "px";
         mouseLight.style.top = e.clientY + "px";
+    });
+}
+
+// 3. دالة نسخ النصوص وإظهار الإشعار بشكل متجاوب
+function copyText(id) {
+    const textElement = document.getElementById(id);
+    if (!textElement) return;
+
+    const textToCopy = textElement.innerText || textElement.textContent;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        const toast = document.getElementById("toast");
+        if (toast) {
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2000);
+        }
+    }).catch(err => {
+        console.error("Failed to copy: ", err);
     });
 }
