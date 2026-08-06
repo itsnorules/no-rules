@@ -642,28 +642,27 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         box-sizing: border-box !important;
     }
 }
-/* إشعار النسخ متكيف مع منطقة السكرول الحالية للموبايل */
+/* حل مشكلة الثبات على الشاشة أثناء السكرول للموبايل */
 @media (max-width: 768px) {
     #toast {
         position: fixed !important;
-        top: 25px !important;
+        top: 20px !important;
         left: 50% !important;
         bottom: auto !important;
-        transform: translateX(-50%) translateY(-30px);
-        width: 85%;
-        max-width: 310px;
-        text-align: center;
-        padding: 12px 20px;
-        font-size: 14px;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 99999!important;
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, visibility 0.3s ease;
+        transform: translateX(-50%) translateY(-100px) !important;
+        width: 85% !important;
+        max-width: 300px !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 14px !important;
+        z-index: 9999999 !important;
+        transition: transform 0.3s ease, opacity 0.3s ease !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
     #toast.show {
-        opacity: 1!important;
-        visibility: visible!important;
-        transform: translateX(-50%) translateY(0)!important;
+        opacity: 1 !important;
+        transform: translateX(-50%) translateY(0) !important;
     }
 }
