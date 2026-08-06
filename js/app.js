@@ -43,23 +43,37 @@ if (mouseLight && window.innerWidth > 768) {
     });
 }
 
-// 3. دالة نسخ النصوص وإظهار الإشعار بشكل متجاوب
+// دالة النسخ المضمونة لجميع المتصفحات والموبايل
 function copyText(id) {
     const textElement = document.getElementById(id);
     if (!textElement) return;
 
     const textToCopy = textElement.innerText || textElement.textContent;
 
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        const toast = document.getElementById("toast");
-        if (toast) {
-            toast.classList.add("show");
-
-            setTimeout(() => {
-                toast.classList.remove("show");
-            }, 2000);
+    // طريقة نسخ متوافقة مع كافة الهواتف
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy).then(showToast);
+    } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            showToast();
+        } catch (err) {
+            console.error('Copy failed', err);
         }
-    }).catch(err => {
-        console.error("Failed to copy: ", err);
-    });
+        document.body.removeChild(textArea);
+    }
+}
+
+function showToast() {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+
+    toast.classList.add("show");
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 }
