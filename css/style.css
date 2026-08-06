@@ -45,6 +45,7 @@ body.loaded {
     top: 0;
     left: 0;
     z-index: 1;
+    pointer-events: none !important;
 }
 
 /* ================= NAVBAR ================= */
@@ -675,8 +676,9 @@ footer {
 }
 
 .loader-hidden {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important; 
 }
 
 @keyframes heroGlow {
