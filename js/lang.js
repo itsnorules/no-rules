@@ -114,7 +114,13 @@ function toggleLanguage() {
     setLanguage(newLang);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// تطبيق اللغة مباشرة وفور تحميل عناصر DOM لتجنب التردد في العرض
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("norules_lang") || "en";
+        setLanguage(savedLang);
+    });
+} else {
     const savedLang = localStorage.getItem("norules_lang") || "en";
     setLanguage(savedLang);
-});
+}
