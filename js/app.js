@@ -24,14 +24,23 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(removeLoader, 800);
 });
 
-// Mouse Light Tracking Effect
+// Mouse Light Tracking Effect (مع دعم حركة اللمس للموبايل)
 const mouseLight = document.querySelector(".mouse-light");
 
 if (mouseLight) {
+    // حركة الماوس للـ PC
     document.addEventListener("mousemove", (e) => {
         mouseLight.style.left = e.clientX + "px";
         mouseLight.style.top = e.clientY + "px";
     });
+
+    // حركة اللمس للموبايل
+    document.addEventListener("touchmove", (e) => {
+        if (e.touches.length > 0) {
+            mouseLight.style.left = e.touches[0].clientX + "px";
+            mouseLight.style.top = e.touches[0].clientY + "px";
+        }
+    }, { passive: true });
 }
 
 // Scroll Reveal Observer Animation
