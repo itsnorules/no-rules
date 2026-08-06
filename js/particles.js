@@ -29,7 +29,7 @@ particlesJS("particles-js", {
         },
         move: {
             enable: true,
-            speed: isMobile ? 1.2 : 2.2, // سرعة معتدلة لتجنب استهلاك معالج الموبايل
+            speed: isMobile ? 1.2 : 2.2,
             direction: "none",
             random: false,
             straight: false,
@@ -48,13 +48,13 @@ particlesJS("particles-js", {
         detect_on: "canvas",
         events: {
             onhover: {
-                enable: !isMobile, // تفعيل التفاعل للـ PC وإلغاؤه للموبايل لضمان سلاسة الضغط
+                enable: !isMobile,
                 mode: "grab"
             },
             onclick: {
-                enable: false // إلغاء الضغط على الخلفية لمنع ثقل المتصفح
+                enable: false
             },
-            resize: false // تم إيقاف الاعتماد على resize لمنع تعليق خلفية سفاري أثناء التمرير
+            resize: false
         },
         modes: {
             grab: {
@@ -65,5 +65,5 @@ particlesJS("particles-js", {
             }
         }
     },
-    retina_detect: false // إيقاف retina_detect للموبايل لمنع مضاعفة البكسلات وثقل العرض
+    retina_detect: false
 });
