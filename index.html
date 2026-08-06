@@ -180,23 +180,8 @@
     <script src="js/particles.js"></script>
     <script src="js/app.js"></script>
     <script src="js/lang.js"></script>
-
-    <script>
-      (function() {
-        function killLoader() {
-          var loader = document.getElementById("loader");
-          if (loader) {
-            loader.style.opacity = "0";
-            loader.style.pointerEvents = "none";
-            loader.style.display = "none";
-          }
-          document.body.classList.add("loaded");
-        }
-
-        document.addEventListener("DOMContentLoaded", killLoader);
-        setTimeout(killLoader, 800);
-      })();
-    </script>
+    
+  
 </body>
 
 </html>
