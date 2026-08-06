@@ -673,13 +673,23 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         background-attachment: scroll; /* خفيف جداً على الموبايل */
     }
 }
-/* إصلاح شكل اللوجو الدائري */
+/* ضبط حجم اللوجو وضمان عدم تكبيره في الموبايل */
 .loader-logo, 
 .logo-img,
-header img,
-.navbar img {
-    width: 80px !important;
-    height: 80px !important;
+img[src*="logo"] {
+    width: 70px !important;
+    height: 70px !important;
+    max-width: 70px !important;
     object-fit: cover !important;
     border-radius: 50% !important;
+}
+
+@media (max-width: 768px) {
+    .loader-logo, 
+    .logo-img,
+    img[src*="logo"] {
+        width: 55px !important;
+        height: 55px !important;
+        max-width: 55px !important;
+    }
 }
