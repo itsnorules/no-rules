@@ -673,7 +673,7 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         background-attachment: scroll; /* خفيف جداً على الموبايل */
     }
 }
-/* ضبط حجم اللوجو وضمان عدم تكبيره في الموبايل */
+/* ضبط حجم اللوجو وشكله وتموضعه بالمنتصف */
 .loader-logo, 
 .logo-img,
 img[src*="logo"] {
@@ -682,6 +682,15 @@ img[src*="logo"] {
     max-width: 70px !important;
     object-fit: cover !important;
     border-radius: 50% !important;
+    margin-top: 8px !important; /* نزل اللوجو 8 بكسل لتحت */
+}
+
+/* محاذاة حاوية اللوجو بالمنتصف */
+.logo, 
+header .logo,
+nav .logo {
+    display: flex !important;
+    align-items: center !important;
 }
 
 @media (max-width: 768px) {
@@ -691,5 +700,6 @@ img[src*="logo"] {
         width: 55px !important;
         height: 55px !important;
         max-width: 55px !important;
+        margin-top: 6px !important; /* إنزال مناسب لشاشات الموبايل */
     }
 }
