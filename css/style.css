@@ -22,7 +22,7 @@ body.loaded {
     opacity: 1;
 }
 
-/* ================= MOUSE GLOW ================= */
+/* ================= MOUSE GLOW (FIXED FOR TOUCH) ================= */
 .mouse-light {
     position: fixed;
     width: 350px;
@@ -30,10 +30,10 @@ body.loaded {
     background: #E50914;
     border-radius: 50%;
     filter: blur(180px);
-    pointer-events: none;
     opacity: .12;
     transform: translate(-50%, -50%);
-    z-index: 0;
+    z-index: -1;
+    pointer-events: none;
     transition: .05s ease-out;
 }
 
@@ -116,10 +116,10 @@ nav ul a:hover::after {
     width: 100%;
 }
 
-/* ================= HERO SECTION ================= */
+/* ================= HERO SECTION (FIXED VIEWPORT) ================= */
 .hero {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,26 +227,15 @@ nav ul a:hover::after {
 }
 
 @keyframes glow {
-    0%, 100% {
-        text-shadow: 0 0 10px #E50914, 0 0 20px #E50914;
-    }
-    50% {
-        text-shadow: 0 0 20px #ff1a1a, 0 0 50px #ff1a1a;
-    }
+    0%, 100% { text-shadow: 0 0 10px #E50914, 0 0 20px #E50914; }
+    50% { text-shadow: 0 0 20px #ff1a1a, 0 0 50px #ff1a1a; }
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(70px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(70px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero Button Shine Effect */
 .buttons a::before {
     content: "";
     position: absolute;
@@ -254,12 +243,7 @@ nav ul a:hover::after {
     left: -120%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, .35),
-        transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .35), transparent);
     transform: skewX(-25deg);
     transition: .7s;
 }
@@ -604,7 +588,7 @@ footer {
     transform: translateY(0);
 }
 
-/* ================= LOADER (شاشة التحميل) ================= */
+/* ================= LOADER ================= */
 #loader {
     position: fixed;
     top: 0;
@@ -617,7 +601,6 @@ footer {
     align-items: center;
     z-index: 99999;
     transition: opacity .5s ease, visibility .5s ease;
-    /* حماية لإخفاء اللودر تلقائياً بعد 1.2 ثانية كحد أقصى حتى لو لم ينتهِ التحميل */
     animation: forceHideLoader 0.5s 1.2s forwards;
 }
 
@@ -626,6 +609,7 @@ footer {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
+        display: none;
     }
 }
 
@@ -678,16 +662,13 @@ footer {
 .loader-hidden {
     opacity: 0 !important;
     visibility: hidden !important;
-    pointer-events: none !important; 
+    pointer-events: none !important;
+    display: none !important;
 }
 
 @keyframes heroGlow {
-    0%, 100% {
-        text-shadow: 0 0 10px #E50914, 0 0 20px #E50914;
-    }
-    50% {
-        text-shadow: 0 0 20px #ff1a1a, 0 0 40px #ff1a1a, 0 0 70px #ff1a1a;
-    }
+    0%, 100% { text-shadow: 0 0 10px #E50914, 0 0 20px #E50914; }
+    50% { text-shadow: 0 0 20px #ff1a1a, 0 0 40px #ff1a1a, 0 0 70px #ff1a1a; }
 }
 
 /* ================= LANGUAGE TOGGLE BUTTON ================= */
@@ -734,7 +715,7 @@ html[dir="rtl"] .support-card h2 img {
     margin-left: 8px !important;
 }
 
-/* ================= RESPONSIVE (MOBILE FIXES) ================= */
+/* ================= RESPONSIVE (MOBILE FIXES UPDATED) ================= */
 @media (max-width: 992px) {
     nav {
         padding: 0 5%;
@@ -753,15 +734,12 @@ html[dir="rtl"] .support-card h2 img {
 }
 
 @media (max-width: 768px) {
-    header {
-        position: relative;
-    }
-
     nav {
+        position: sticky;
+        top: 0;
         flex-direction: column;
         height: auto;
         padding: 15px;
-        position: relative;
     }
 
     nav ul {
@@ -778,6 +756,13 @@ html[dir="rtl"] .support-card h2 img {
 
     .logo img {
         width: 55px;
+    }
+
+    .hero {
+        min-height: 100svh;
+        height: auto;
+        padding-top: 140px;
+        padding-bottom: 100px;
     }
 
     .hero h1 {
@@ -803,7 +788,8 @@ html[dir="rtl"] .support-card h2 img {
     }
 
     .buttons a {
-        width: 80%;
+        width: 100%;
+        max-width: 320px;
         text-align: center;
     }
 
@@ -830,7 +816,8 @@ html[dir="rtl"] .support-card h2 img {
     }
 
     .social-buttons a {
-        width: 220px;
+        width: 100%;
+        max-width: 320px;
     }
 
     .qr-code {
