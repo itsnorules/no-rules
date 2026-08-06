@@ -12,30 +12,29 @@
     <meta property="og:title" content="NO RULES | Gaming Without Limits">
     <meta property="og:description" content="Story Games • Football • FPS • Chill Streams">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://no-rules-six.vercel.app/assets/images/logo.png">
+    <meta property="og:image" content="https://no-rules-six.vercel.app/assets/images/logo.webp">
     <meta property="og:url" content="https://no-rules-six.vercel.app/">
     
     <meta property="og:site_name" content="NO RULES">
     <meta property="og:locale" content="en_US">
     
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NO RULES | Gaming Without Limits">
-  <meta name="twitter:description" content="Story Games • Football • FPS • Chill Streams">
-  <meta name="twitter:image" content="https://no-rules-six.vercel.app/assets/images/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NO RULES | Gaming Without Limits">
+    <meta name="twitter:description" content="Story Games • Football • FPS • Chill Streams">
+    <meta name="twitter:image" content="https://no-rules-six.vercel.app/assets/images/logo.webp">
 
-    <link rel="icon" href="assets/images/logo.png">
+    <link rel="icon" href="assets/images/logo.webp">
 
     <!-- Preconnect السريع للسيرفرات -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- الخطوط وملف الاستايل الأساسي -->
+    <!-- الخطوط وملف الاستايل الأساسي مع تسريع الرندر -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- مكتبة الأيقونات المحدثة لتحميل سريع بدون تعطيل الشاشة -->
+    <!-- مكتبة الأيقونات المحدثة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
 </head>
@@ -43,7 +42,7 @@
 <body>
     <div id="loader">
         <div class="loader-content">
-           <img src="assets/images/logo.webp" class="loader-logo" alt="Logo" width="80" height="80" loading="lazy" decoding="async">
+            <img src="assets/images/logo.webp" class="loader-logo" alt="Logo" width="80" height="80" loading="lazy" decoding="async">
             <h1>NO RULES</h1>
             <div class="loader-bar">
                 <span></span>
@@ -57,7 +56,7 @@
     <header>
         <nav>
             <div class="logo">
-               <img src="assets/images/logo.webp" class="loader-logo" alt="Logo" width="80" height="80" loading="lazy" decoding="async">
+                <img src="assets/images/logo.webp" class="loader-logo" alt="Logo" width="80" height="80" loading="lazy" decoding="async">
             </div>
 
             <ul>
@@ -175,11 +174,7 @@
 
     <footer>
         <div class="footer-container">
-           <img
-              src="assets/images/logo.png"
-              alt="NO RULES Logo"
-               loading="lazy"
-               decoding="async">
+            <img src="assets/images/logo.webp" alt="NO RULES Logo" width="80" height="80" loading="lazy" decoding="async">
             <h2>NO RULES</h2>
             <p data-key="footerTag">No Rules. Just Great Games.</p>
 
@@ -195,12 +190,11 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/lang.js"></script>
-    
-  
+    <!-- تحميل ملفات JS بخاصية defer لتجنب تعطيل الشاشة -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="js/particles.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/lang.js" defer></script>
 </body>
 
-</html> 
+</html>
