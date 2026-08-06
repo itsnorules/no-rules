@@ -1,26 +1,27 @@
 // ================================
-// NO RULES Website - Main JS (iOS Fast Load)
+// NO RULES Website - Optimized JS
 // ================================
 
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. إخفاء اللودر فوراً
+    // 1. إخفاء اللودر فوراً وبسلاسة
     const loader = document.getElementById("loader");
     if (loader) {
-        loader.style.display = "none";
+        loader.style.opacity = "0";
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 300);
     }
     document.body.classList.add("loaded");
 
-    // 2. فحص الهواتف (يشمل جميع متصفحات الآيفون)
+    // 2. تفعيل الاستجابة الفورية للهواتف لرفع الأداء
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
     if (isMobile) {
-        // إظهار كافة العناصر فوراً على الموبايل بدون انتظار حركة التمرير
         document.querySelectorAll(".hidden").forEach((el) => {
             el.classList.remove("hidden");
             el.classList.add("reveal");
         });
     } else {
-        // تشغيل الأنيميشن للـ PC
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Mouse Light Effect (للـ PC فقط لتقليل الضغط على الآيفون)
+// تشغيل تأثير ضوء الماوس للـ PC فقط لتقليل الاستهلاك على الجوال
 const mouseLight = document.querySelector(".mouse-light");
 if (mouseLight && window.innerWidth > 768) {
     document.addEventListener("mousemove", (e) => {
