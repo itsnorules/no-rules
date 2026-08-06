@@ -642,3 +642,23 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         box-sizing: border-box !important;
     }
 }
+/* تحسين ظهور إشعار النسخ على الشاشات الصغيرة والموبايل */
+@media (max-width: 768px) {
+    #toast {
+        top: auto !important;
+        bottom: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 85%;
+        max-width: 320px;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 14px;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    #toast.show {
+        top: auto !important;
+        bottom: 30px !important; /* يظهر من الأسفل فوق الإبهام مباشرة مهما عمل السكرول */
+    }
+}
