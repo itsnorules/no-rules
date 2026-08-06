@@ -646,24 +646,24 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
 @media (max-width: 768px) {
     #toast {
         position: fixed !important;
-        top: 20px !important;
+        top: 25px !important;
         left: 50% !important;
         bottom: auto !important;
-        transform: translateX(-50%) translateY(-20px);
-        width: 80%;
-        max-width: 290px;
+        transform: translateX(-50%) translateY(-30px);
+        width: 85%;
+        max-width: 310px;
         text-align: center;
-        padding: 12px 18px;
-        font-size: 13px;
+        padding: 12px 20px;
+        font-size: 14px;
         opacity: 0;
         visibility: hidden;
-        z-index: 99999;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 99999!important;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, visibility 0.3s ease;
     }
 
     #toast.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
+        opacity: 1!important;
+        visibility: visible!important;
+        transform: translateX(-50%) translateY(0)!important;
     }
 }
