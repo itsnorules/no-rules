@@ -194,11 +194,27 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/lang.js"></script>
+   <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/app.js"></script>
+<script src="js/lang.js"></script>
+
+<!-- ضَع الكود الجديد هنا مباشرة -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const preloader = document.getElementById("preloader") || document.querySelector(".preloader");
+    if (preloader) {
+      setTimeout(function() {
+        preloader.style.transition = "opacity 0.4s ease";
+        preloader.style.opacity = "0";
+        setTimeout(function() {
+          preloader.style.display = "none";
+        }, 400);
+      }, 300);
+    }
+  });
+</script>
 
 </body>
 
