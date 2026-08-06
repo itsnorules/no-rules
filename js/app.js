@@ -50,7 +50,6 @@ function copyText(id) {
 
     const textToCopy = textElement.innerText || textElement.textContent;
 
-    // طريقة نسخ متوافقة مع كافة الهواتف
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(textToCopy).then(showToast);
     } else {
@@ -72,7 +71,15 @@ function showToast() {
     const toast = document.getElementById("toast");
     if (!toast) return;
 
+    // حساب مسافة السكرول الحالية للجوال والـ PC
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+    
+    // إجبار الإشعار للظهور أعلى المنطقة التي ينظر إليها المستخدم حالياً
+    toast.style.position = "absolute";
+    toast.style.top = (currentScroll + 30) + "px";
+
     toast.classList.add("show");
+
     setTimeout(() => {
         toast.classList.remove("show");
     }, 2000);
