@@ -642,32 +642,26 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         box-sizing: border-box !important;
     }
 }
-/* تنسيق إشعار النسخ الموحد للـ PC والموبايل */
+/* إشعار النسخ - نظيف وخفيف للأداء */
 #toast {
-    position: fixed !important;
+    position: fixed;
     top: -100px;
-    left: 50% !important;
+    left: 50%;
     transform: translateX(-50%);
     background: #E50914;
-    color: #ffffff;
+    color: #fff;
     padding: 12px 24px;
     border-radius: 10px;
     font-weight: bold;
     font-size: 14px;
-    z-index: 999999 !important;
+    z-index: 999999;
     opacity: 0;
-    visibility: hidden;
+    transition: top 0.3s ease, opacity 0.3s ease;
     pointer-events: none;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
-    transition: top 0.4s ease, opacity 0.3s ease, visibility 0.3s ease;
-    width: max-content;
-    max-width: 90%;
-    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* حالة ظهور الإشعار */
 #toast.show {
-    top: 25px !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    top: 20px;
+    opacity: 1;
 }
