@@ -1,25 +1,27 @@
 // ================================
 // NO RULES Website - Main JS
+// Fast Loading & Mobile Responsive
 // ================================
 
 document.addEventListener("DOMContentLoaded", function () {
-    // إخفاء اللودر فوراً
+    // 1. إخفاء اللودر فوراً
     const loader = document.getElementById("loader");
     if (loader) {
         loader.style.display = "none";
     }
     document.body.classList.add("loaded");
 
-    // إظهار المحتوى فوراً لمنع التعليق
+    // 2. إلغاء التأخير وإظهار العناصر فوراً على الموبايل
     const isMobile = window.innerWidth <= 768;
-    
+
     if (isMobile) {
+        // إزالة كلاس hidden وتفعيل التجاوب الفوري على الموبايل
         document.querySelectorAll(".hidden").forEach(function (el) {
             el.classList.remove("hidden");
             el.classList.add("reveal");
         });
     } else {
-        // حركات الظهور للـ PC
+        // تشغيل أنيميشن الظهور الاحترافي للـ PC فقط
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Mouse Light Effect
+// Mouse Light Tracking Effect
 const mouseLight = document.querySelector(".mouse-light");
 if (mouseLight) {
     document.addEventListener("mousemove", (e) => {
