@@ -1,6 +1,5 @@
 // ================================
-// NO RULES Website - Main JS
-// Fast Loading & Mobile Responsive
+// NO RULES Website - Main JS (iOS Fast Load)
 // ================================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -11,17 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     document.body.classList.add("loaded");
 
-    // 2. إلغاء التأخير وإظهار العناصر فوراً على الموبايل
-    const isMobile = window.innerWidth <= 768;
+    // 2. فحص الهواتف (يشمل جميع متصفحات الآيفون)
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
     if (isMobile) {
-        // إزالة كلاس hidden وتفعيل التجاوب الفوري على الموبايل
-        document.querySelectorAll(".hidden").forEach(function (el) {
+        // إظهار كافة العناصر فوراً على الموبايل بدون انتظار حركة التمرير
+        document.querySelectorAll(".hidden").forEach((el) => {
             el.classList.remove("hidden");
             el.classList.add("reveal");
         });
     } else {
-        // تشغيل أنيميشن الظهور الاحترافي للـ PC فقط
+        // تشغيل الأنيميشن للـ PC
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -34,18 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Mouse Light Tracking Effect
+// Mouse Light Effect (للـ PC فقط لتقليل الضغط على الآيفون)
 const mouseLight = document.querySelector(".mouse-light");
-if (mouseLight) {
+if (mouseLight && window.innerWidth > 768) {
     document.addEventListener("mousemove", (e) => {
         mouseLight.style.left = e.clientX + "px";
         mouseLight.style.top = e.clientY + "px";
     });
-
-    document.addEventListener("touchmove", (e) => {
-        if (e.touches.length > 0) {
-            mouseLight.style.left = e.touches[0].clientX + "px";
-            mouseLight.style.top = e.touches[0].clientY + "px";
-        }
-    }, { passive: true });
 }
