@@ -3,12 +3,10 @@
 // Version 1.0
 // ================================
 
-// Fade In Animation & Loader Exit On Page Load
-window.addEventListener("load", () => {
-   // إخفاء شاشة التحميل وتفعيل الأزرار فوراً
+// إخفاء شاشة التحميل وتفعيل الأزرار فوراً عند جاهزية العناصر
 document.addEventListener("DOMContentLoaded", function () {
     const loader = document.getElementById("loader");
-    
+
     function removeLoader() {
         if (loader) {
             loader.classList.add("loader-hidden");
@@ -19,11 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // التنفيذ الفوري بمجرد تحميل هيكل الصفحة
+    // التنفيذ الفوري
     removeLoader();
 
-    // احتياطاً في حال تأخر الاستجابة
-    setTimeout(removeLoader, 1000);
+    // احتياطاً في حال تأخر أي عنصر
+    setTimeout(removeLoader, 800);
 });
 
 // Mouse Light Tracking Effect
