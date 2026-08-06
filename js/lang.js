@@ -1,126 +1,92 @@
 // ================================
-// NO RULES - Multi-Language System
+// NO RULES Website - Optimized JS
 // ================================
 
-const translations = {
-    en: {
-        // Nav
-        navHome: "Home",
-        navSupport: "Support",
-        navAbout: "About",
-
-        // Hero
-        heroTagline: "Story Games • Football • FPS • Chill Streams",
-        btnWatchLive: "WATCH LIVE",
-        btnSupport: "SUPPORT",
-
-        // About
-        aboutTitle: "ABOUT ME",
-        aboutText: "Welcome! I'm Feras, also known as <strong>NO RULES</strong>. I stream story-driven games, football games, FPS titles, and everything fun. My goal is simple: create an awesome community where everyone enjoys gaming together.",
-        statStory: "Story Games",
-        statFootball: "Football",
-        statFps: "FPS Games",
-        statCommunity: "Community",
-
-        // Journey
-        journeyTitle: "MY JOURNEY",
-        journeyText: "Every great setup starts somewhere. I'm currently streaming and creating content while building my dream gaming setup. Thanks for being part of the journey. ❤️",
-        jDevice: "Current Device",
-        jGraphics: "Graphics",
-        jGoal: "Goal",
-        jGoalText: "Build My Dream Gaming PC",
-        jCommunity: "Community",
-        jCommunityText: "Growing Together Every Stream",
-
-        // Socials & Footer
-        followTitle: "FOLLOW ME",
-        footerTag: "No Rules. Just Great Games.",
-        footerRights: "All Rights Reserved.",
-
-        // Support Page
-        suppHeaderTitle: "SUPPORT NO RULES",
-        suppDesc: "If you enjoy my streams and want to support the journey, you can donate using one of the methods below. Thank you for every bit of support ❤️",
-        btnCopyBinance: "Copy Binance ID",
-        btnCopyAddress: "Copy Address",
-        toastCopied: "Address Copied Successfully!",
-        footerSuppTag: "Thanks for supporting the journey ❤️"
-    },
-    ar: {
-        // Nav
-        navHome: "الرئيسية",
-        navSupport: "الدعم",
-        navAbout: "حولي",
-
-        // Hero
-        heroTagline: "ألعاب القصة • كرة القدم • ألعاب التصويب • بثوث ممتعة",
-        btnWatchLive: "شاهد البث المباشر",
-        btnSupport: "ادعم القناة",
-
-        // About
-        aboutTitle: "حولي",
-        aboutText: "أهلاً بك! أنا فراس، والمعروف بـ <strong>NO RULES</strong>. أقوم ببث ألعاب القصة، ألعاب كرة القدم، ألعاب التصويب وكل ما هو ممتع. هدفي بسيط: بناء مجتمع رهيب يستمتع بالألعاب معاً.",
-        statStory: "ألعاب القصة",
-        statFootball: "كرة القدم",
-        statFps: "ألعاب التصويب",
-        statCommunity: "المجتمع",
-
-        // Journey
-        journeyTitle: "رحلتي",
-        journeyText: "كل سيت أب عظيم يبدأ من مكان ما. أقوم حالياً بالبث وصناعة المحتوى أثناء بناء سيت أب الأحلام. شكراً لأنك جزء من هذه الرحلة. ❤️",
-        jDevice: "الجهاز الحالي",
-        jGraphics: "كرت الشاشة",
-        jGoal: "الهدف",
-        jGoalText: "بناء بيسي الأحلام للألعاب",
-        jCommunity: "المجتمع",
-        jCommunityText: "ننمو معاً في كل بث",
-
-        // Socials & Footer
-        followTitle: "تابعني",
-        footerTag: "لا قواعد. فقط ألعاب عظيمة.",
-        footerRights: "جميع الحقوق محفوظة.",
-
-        // Support Page
-        suppHeaderTitle: "ادعم NO RULES",
-        suppDesc: "إذا كنت تستمتع بالبثوث وتريد دعم الرحلة، يمكنك التبرع باستخدام إحدى الطرق أدناه. شكراً لكل دعم تقدمه ❤️",
-        btnCopyBinance: "نسخ معرف بايننس",
-        btnCopyAddress: "نسخ العنوان",
-        toastCopied: "تم نسخ العنوان بنجاح!",
-        footerSuppTag: "شكراً لدعمك الرحلة ❤️"
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. إخفاء اللودر فوراً وبسلاسة
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.opacity = "0";
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 300);
     }
-};
+    document.body.classList.add("loaded");
 
-function setLanguage(lang) {
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    // 2. تفعيل الاستجابة الفورية للهواتف لرفع الأداء
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-    document.querySelectorAll("[data-key]").forEach(el => {
-        const key = el.getAttribute("data-key");
-        if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key];
+    if (isMobile) {
+        document.querySelectorAll(".hidden").forEach((el) => {
+            el.classList.remove("hidden");
+            el.classList.add("reveal");
+        });
+    } else {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("reveal");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll(".hidden").forEach((el) => observer.observe(el));
+    }
+
+    // 3. تشغيل تأثير ضوء الماوس للـ PC فقط بطريقة خفيفة على المعالج
+    const mouseLight = document.querySelector(".mouse-light");
+    if (mouseLight && window.innerWidth > 768) {
+        let ticking = false;
+        document.addEventListener("mousemove", (e) => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    mouseLight.style.left = e.clientX + "px";
+                    mouseLight.style.top = e.clientY + "px";
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+});
+
+// 4. دالة النسخ المضمونة لجميع المتصفحات والموبايل
+function copyText(id) {
+    const textElement = document.getElementById(id);
+    if (!textElement) return;
+
+    const textToCopy = textElement.innerText || textElement.textContent;
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy).then(showToast);
+    } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            showToast();
+        } catch (err) {
+            console.error('Copy failed', err);
         }
-    });
-
-    const langBtn = document.getElementById("lang-toggle-btn");
-    if (langBtn) {
-        langBtn.innerText = lang === "ar" ? "English 🇺🇸" : "العربية 🇸🇦";
+        document.body.removeChild(textArea);
     }
-
-    localStorage.setItem("norules_lang", lang);
 }
 
-function toggleLanguage() {
-    const currentLang = localStorage.getItem("norules_lang") || "en";
-    const newLang = currentLang === "en" ? "ar" : "en";
-    setLanguage(newLang);
-}
+// 5. دالة إظهار إشعار النسخ فوق مكان السكرول الحالي
+function showToast() {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
 
-// تطبيق اللغة مباشرة وفور تحميل عناصر DOM لتجنب التردد في العرض
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-        const savedLang = localStorage.getItem("norules_lang") || "en";
-        setLanguage(savedLang);
-    });
-} else {
-    const savedLang = localStorage.getItem("norules_lang") || "en";
-    setLanguage(savedLang);
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+    
+    toast.style.position = "absolute";
+    toast.style.top = (currentScroll + 30) + "px";
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 }
