@@ -22,7 +22,7 @@
     <!-- Loader -->
     <div id="loader">
         <div class="loader-content">
-            <img src="../assets/images/logo.png" class="loader-logo">
+            <img src="../assets/images/logo.png" class="loader-logo" alt="Logo">
             <h1>NO RULES</h1>
             <div class="loader-bar">
                 <span></span>
@@ -126,7 +126,7 @@
         </div>
     </footer>
 
-    <!-- Copy Function & External Scripts -->
+    <!-- Copy Function -->
     <script>
         function copyText(id) {
             const text = document.getElementById(id).innerText;
@@ -141,25 +141,29 @@
         }
     </script>
 
+    <!-- External Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="../js/particles.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/lang.js"></script>
-<!-- ضَع كود تسريع التحميل هنا قبل وسم إغلاق body -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const preloader = document.getElementById("preloader") || document.querySelector(".preloader");
-    if (preloader) {
-      setTimeout(function() {
-        preloader.style.transition = "opacity 0.4s ease";
-        preloader.style.opacity = "0";
-        setTimeout(function() {
-          preloader.style.display = "none";
-        }, 400);
-      }, 300);
-    }
-  });
-</script>
+
+    <!-- كود إخفاء اللودر وتفعيل اللمس المباشر -->
+    <script>
+      (function() {
+        function killLoader() {
+          var loader = document.getElementById("loader");
+          if (loader) {
+            loader.style.opacity = "0";
+            loader.style.pointerEvents = "none";
+            loader.style.display = "none";
+          }
+          document.body.classList.add("loaded");
+        }
+
+        document.addEventListener("DOMContentLoaded", killLoader);
+        setTimeout(killLoader, 800);
+      })();
+    </script>
 </body>
 
 </html>
