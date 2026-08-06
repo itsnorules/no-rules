@@ -1,6 +1,6 @@
 // ================================
 // NO RULES Website - Main JS
-// Version 1.0
+// Version 1.1 (Mobile Optimized)
 // ================================
 
 // إخفاء شاشة التحميل وتفعيل الأزرار فوراً عند جاهزية العناصر
@@ -43,14 +43,25 @@ if (mouseLight) {
     }, { passive: true });
 }
 
-// Scroll Reveal Observer Animation
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("reveal");
-        }
-    });
-});
+// Scroll Reveal Observer Animation (مُعدل للحفاظ على الـ PC وتعبئة الموبايل فوراً)
+const isMobile = window.innerWidth <= 768;
 
-const hiddenElements = document.querySelectorAll(".hidden");
-hiddenElements.forEach((el) => observer.observe(el));
+if (isMobile) {
+    // على الموبايل: إزالة كلاس hidden فوراً لإلغاء التعليق والبطء في الضغط والسكرول
+    document.querySelectorAll(".hidden").forEach((el) => {
+        el.classList.remove("hidden");
+        el.classList.add("reveal");
+    });
+} else {
+    // على الـ PC: تشغيل الـ Scroll Reveal بكفاءة عالية
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("reveal");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const hiddenElements = document.querySelectorAll(".hidden");
+    hiddenElements.forEach((el) => observer.observe(el));
+}
