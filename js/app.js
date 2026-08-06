@@ -5,14 +5,25 @@
 
 // Fade In Animation & Loader Exit On Page Load
 window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
-
+   // إخفاء شاشة التحميل وتفعيل الأزرار فوراً
+document.addEventListener("DOMContentLoaded", function () {
     const loader = document.getElementById("loader");
-    if (loader) {
-        setTimeout(() => {
+    
+    function removeLoader() {
+        if (loader) {
             loader.classList.add("loader-hidden");
-        }, 1200);
+            document.body.classList.add("loaded");
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 500);
+        }
     }
+
+    // التنفيذ الفوري بمجرد تحميل هيكل الصفحة
+    removeLoader();
+
+    // احتياطاً في حال تأخر الاستجابة
+    setTimeout(removeLoader, 1000);
 });
 
 // Mouse Light Tracking Effect
