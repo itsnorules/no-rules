@@ -14,7 +14,7 @@ body {
     background-attachment: fixed;
     color: white;
     overflow-x: hidden;
-    opacity: 0;
+    opacity: 1 !important;
     transition: opacity 0.8s ease;
     min-height: 100vh;
 }
