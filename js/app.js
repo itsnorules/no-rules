@@ -32,18 +32,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelectorAll(".hidden").forEach((el) => observer.observe(el));
     }
+
+    // 3. تشغيل تأثير ضوء الماوس للـ PC فقط بطريقة خفيفة على المعالج
+    const mouseLight = document.querySelector(".mouse-light");
+    if (mouseLight && window.innerWidth > 768) {
+        let ticking = false;
+        document.addEventListener("mousemove", (e) => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    mouseLight.style.left = e.clientX + "px";
+                    mouseLight.style.top = e.clientY + "px";
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
 });
 
-// تشغيل تأثير ضوء الماوس للـ PC فقط
-const mouseLight = document.querySelector(".mouse-light");
-if (mouseLight && window.innerWidth > 768) {
-    document.addEventListener("mousemove", (e) => {
-        mouseLight.style.left = e.clientX + "px";
-        mouseLight.style.top = e.clientY + "px";
-    });
-}
-
-// دالة النسخ المضمونة لجميع المتصفحات والموبايل
+// 4. دالة النسخ المضمونة لجميع المتصفحات والموبايل
 function copyText(id) {
     const textElement = document.getElementById(id);
     if (!textElement) return;
@@ -67,14 +74,13 @@ function copyText(id) {
     }
 }
 
+// 5. دالة إظهار إشعار النسخ فوق مكان السكرول الحالي
 function showToast() {
     const toast = document.getElementById("toast");
     if (!toast) return;
 
-    // حساب مسافة السكرول الحالية للجوال والـ PC
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
     
-    // إجبار الإشعار للظهور أعلى المنطقة التي ينظر إليها المستخدم حالياً
     toast.style.position = "absolute";
     toast.style.top = (currentScroll + 30) + "px";
 
