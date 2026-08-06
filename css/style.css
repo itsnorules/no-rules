@@ -453,93 +453,70 @@ footer {
 html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
 
 /* ================= RESPONSIVE FIXES (MOBILE & TABLET) ================= */
-@media (max-width: 992px) {
-    .stats, .journey-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 768px) {
+    /* تعديل شريط القائمة العلوية للموبايل */
     nav {
         position: fixed;
         height: 70px;
-        padding: 0 4%;
+        padding: 0 12px;
+        justify-content: space-between;
     }
 
-    .logo img { width: 48px; }
+    .logo img { 
+        width: 42px; 
+    }
 
     nav ul {
-        gap: 12px;
+        gap: 8px;
+        flex-wrap: nowrap;
     }
 
     nav ul a {
-        font-size: 13px;
+        font-size: 11px;
+        padding: 4px 6px;
     }
 
+    .lang-btn {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+
+    /* إصلاح صفحة الدعم والكروت */
+    .support-page {
+        padding-top: 100px;
+        padding-bottom: 60px;
+        min-height: 100vh;
+    }
+
+    .support-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .support-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* حل مشكلة المساحة البيضاء في الأسفل */
+    body, html {
+        background-color: #090909 !important;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* ضبط الأحجام والتمرير */
     .hero {
         min-height: auto;
-        padding-top: 130px;
-        padding-bottom: 60px;
+        padding-top: 110px;
+        padding-bottom: 40px;
     }
 
-    .hero h1 {
-        font-size: 38px;
-        letter-spacing: 2px;
-    }
-
-    .hero h2 {
-        font-size: 20px;
-    }
-
-    .hero p {
-        font-size: 14px;
-        padding: 0 15px;
-    }
-
-    .buttons {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .buttons a {
-        width: 85%;
-        max-width: 280px;
-        text-align: center;
-        padding: 14px 20px;
-    }
-
-    .about, .journey, .socials {
-        padding: 60px 5%;
-    }
-
-    .about h2, .journey h2, .socials h2, .support-page h1 {
-        font-size: 30px;
-    }
-
+    .hero h1 { font-size: 34px; }
+    .hero h2 { font-size: 18px; }
+    
     .stats, .journey-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .social-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .social-buttons a {
-        width: 85%;
-        max-width: 280px;
-        text-align: center;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    /* إلغاء الإخفاء التلقائي عند التمرير في الهواتف لمنع الاختفاء */
-    .hidden {
-        opacity: 1 !important;
-        transform: none !important;
     }
 }
