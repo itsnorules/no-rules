@@ -13,7 +13,7 @@ body {
     background: radial-gradient(circle at top, #2b0000 0%, #090909 65%);
     background-attachment: fixed;
     color: white;
-    overflow-x: hidden;
+    overflow-x: clip;
     opacity: 1 !important;
     transition: opacity 0.8s ease;
     min-height: 100vh;
@@ -645,7 +645,7 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
 /* إشعار النسخ - نظيف وخفيف للأداء */
 #toast {
     position: fixed;
-    top: -100px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     background: #E50914;
@@ -656,12 +656,21 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
     font-size: 14px;
     z-index: 999999;
     opacity: 0;
-    transition: top 0.3s ease, opacity 0.3s ease;
+    visibility: hidden;
     pointer-events: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 #toast.show {
-    top: 20px;
     opacity: 1;
+    visibility: visible;
+    
 }
+/* إلغاؤها للموبايل فقط لرفع التقييم وحل مشكلة الـ Toast */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* خفيف جداً على الموبايل */
+    }
+}
+
