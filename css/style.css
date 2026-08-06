@@ -535,7 +535,7 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         font-size: 11px;
     }
 
-    /* ================= ترتيب كروت About و Journey عمودياً لمنع الخروج لليمين ================= */
+    /* ================= ترتيب كروت About و Journey عمودياً ================= */
     .stats, .journey-grid {
         display: flex !important;
         flex-direction: column !important;
@@ -551,17 +551,24 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         box-sizing: border-box !important;
     }
 
-    /* إصلاح إظهار أيقونات FontAwesome وتفاصيلها على Safari */
-    .card h3 i, .journey-card h3 i, nav ul a i, .buttons i {
+    /* إصلاح أيقونات الألعاب والرموز العادية على Safari */
+    .fa-solid, .fa-gamepad, .fa-futbol, .fa-crosshairs, .fa-comments, .fa-laptop, .fa-microchip, .fa-rocket, .fa-heart {
         font-family: "Font Awesome 6 Free" !important;
         font-weight: 900 !important;
+        display: inline-block !important;
+    }
+
+    /* إصلاح شعارات الماركات (Discord و TikTok) لتظهر بوضوح على الآيفون */
+    .fa-brands, .fa-discord, .fa-tiktok {
+        font-family: "Font Awesome 6 Brands" !important;
+        font-weight: 400 !important;
         display: inline-block !important;
     }
 
     /* ================= إصلاح صفحة الدعم لإظهار الـ 3 كروت كاملاً ================= */
     .support-page {
         padding-top: 90px !important;
-        padding-bottom: 140px !important; /* زيادة المساحة السفلية لضمان عدم قص كارت BEP20 */
+        padding-bottom: 140px !important;
         height: auto !important;
         min-height: 100% !important;
         display: block !important;
