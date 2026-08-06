@@ -673,4 +673,13 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         background-attachment: scroll; /* خفيف جداً على الموبايل */
     }
 }
-
+/* إصلاح شكل اللوجو الدائري */
+.loader-logo, 
+.logo-img,
+header img,
+.navbar img {
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
