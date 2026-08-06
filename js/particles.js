@@ -1,41 +1,50 @@
+// ================================
+// NO RULES - Particles Configuration
+// Optimized for Desktop & Mobile Performance
+// ================================
+
+const isMobile = window.innerWidth <= 768;
+
 particlesJS("particles-js", {
     particles: {
         number: {
-            value: 85
+            value: isMobile ? 25 : 85 // تقليل العدد للموبايل لتخفيف العبء
         },
         color: {
-            value: "#ff2a2a" /* لون أسطع وأوضح للعين */
+            value: "#ff2a2a"
         },
         shape: {
             type: "circle"
         },
         opacity: {
-            value: 0.85 /* زيادة الشفافية لتبين بوضوح تام */
+            value: 0.85
         },
         size: {
-            value: 3.5
+            value: isMobile ? 2.5 : 3.5
         },
         move: {
             enable: true,
-            speed: 2.5
+            speed: isMobile ? 1.5 : 2.5
         },
         line_linked: {
             enable: true,
-            distance: 150,
+            distance: isMobile ? 100 : 150,
             color: "#ff2a2a",
-            opacity: 0.6 /* خطوط أوضح وأقوى */
+            opacity: 0.6
         }
     },
     interactivity: {
+        detect_on: "canvas",
         events: {
             onhover: {
-                enable: true,
-                mode: "grab" /* ربط مباشر وملاحظ فوراً مع الماوس */
+                enable: !isMobile, // تفعيل التفاعل للـ PC فقط وإلغاؤه للموبايل لتشغيل الأزرار
+                mode: "grab"
             },
             onclick: {
-                enable: true,
+                enable: !isMobile,
                 mode: "push"
-            }
+            },
+            resize: true
         },
         modes: {
             grab: {
@@ -45,5 +54,6 @@ particlesJS("particles-js", {
                 }
             }
         }
-    }
+    },
+    retina_detect: true
 });
