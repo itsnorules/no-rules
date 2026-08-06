@@ -642,27 +642,28 @@ html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         box-sizing: border-box !important;
     }
 }
-/* تثبيت إشعار النسخ في منتصف الشاشة تماماً للموبايل */
+/* إشعار النسخ متكيف مع منطقة السكرول الحالية للموبايل */
 @media (max-width: 768px) {
     #toast {
         position: fixed !important;
-        top: 50% !important;
+        top: 20px !important;
         left: 50% !important;
         bottom: auto !important;
-        transform: translate(-50%, -50%) scale(0.8);
-        width: 85%;
-        max-width: 300px;
+        transform: translateX(-50%) translateY(-20px);
+        width: 80%;
+        max-width: 290px;
         text-align: center;
-        padding: 14px 20px;
-        font-size: 14px;
+        padding: 12px 18px;
+        font-size: 13px;
         opacity: 0;
         visibility: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        z-index: 99999;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     #toast.show {
         opacity: 1;
         visibility: visible;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translateX(-50%) translateY(0);
     }
 }
